@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cuadrícula para vector dado</title>
+</head>
+<body>
+    <center>
+        <h1>Cuadrícula para vector dado </h1>
+    </center>
+    <center><p id="demo" style="background-color: black; color: aqua; border-radius: 12px; padding-top: 15px;" ></p></center>
+    <script>
+        // Variables globales
+        let text = "";
+        //let hor = "";
+        let i = 0;
+        let ancho = 10000;
+
+        // Obtener columnas para la matriz 
+        let vector = [];
+        vector[0] = 1 + (Math.round(Math.random() * 28));
+        let colmnas = vector[0]-1;
+
+        // Obtener valores para el vector
+        for (j = 1; j < 577; j++) {
+            vector[j] = Math.round(Math.random() * ancho);
+        }
+
+        // Imprimir valores
+        for (i = 0; i < vector.length; i++) {
+            let esp = "";
+            if (vector[i].toString().length < (ancho.toString().length - 1)) {
+                esp = espacio(vector[i].toString().length);
+            }
+            
+            if((colmnas+i)%colmnas == 0 && i != 0){
+                text += esp + vector[i] + "|" + "<br>" + "|";
+            }
+            text += esp + vector[i] + "|";
+            document.getElementById("demo").innerHTML = "|" + text;
+            
+        }
+        
+        // Función espacio
+        function espacio(numCifras) {
+            let espacios = "";
+            for (h = 1; h <= ((ancho.toString().length - 1) - numCifras); h++) {
+                espacios += "_";
+            }
+            return espacios;
+        }
+
+    </script>
+
+</body>
+</html>
